@@ -1,0 +1,634 @@
+{
+	"info": {
+		"_postman_id": "065acd00-68ed-4cc7-8220-0602eb40dcfd",
+		"name": "User Feedback Submission",
+		"description": "For Mandai Wildlife Group Software Development Specialist (Backend) Role.\n\nDone by: Tan Jianhui, July 2024",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14812654"
+	},
+	"item": [
+		{
+			"name": "Get User Feedback for userId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/users/{{userId}}/feedback",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"{{userId}}",
+						"feedback"
+					]
+				},
+				"description": "Gets user feedback for this userId."
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/users/:userId/feedback",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								":userId",
+								"feedback"
+							],
+							"variable": [
+								{
+									"key": "userId"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "119"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"77-pwcYVg6LUw3kajpr3AYI+vLoY3Q\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Jul 2024 16:43:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"name\": \"Denise\",\n            \"email\": \"mybirthdaytoo@email.com\",\n            \"feedback\": \"maybe\",\n            \"rating\": 4,\n            \"user_id\": 7\n        }\n    ]\n}"
+				},
+				{
+					"name": "fail",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/users/{{userId}}/feedback",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"{{userId}}",
+								"feedback"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "27"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1b-jacvLRp9Ew/sJJsbeVC1f1v1T/w\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Jul 2024 16:44:09 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"data\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "Post User Feedback for userId",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Denise\",\n    \"rating\": 4,\n    \"feedback\": \"maybe\",\n    \"email\": \"mybirthdaytoo@email.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/users/{{userId}}/feedback",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"{{userId}}",
+						"feedback"
+					]
+				},
+				"description": "Post feedback for this userId. Duplicate submissions are disallowed.\n\n**Body:**\n\n`{`\n\n`\"name\": varchar(100), required`\n\n`\"rating\": [1-5], required`\n\n`\"feedback\": text, required`\n\n`\"email\": varchar(100), required`\n\n`}`"
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Denise\",\n    \"rating\": 4,\n    \"feedback\": \"maybe\",\n    \"email\": \"mybirthdaytoo@email.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/users/:userId/feedback",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								":userId",
+								"feedback"
+							],
+							"variable": [
+								{
+									"key": "userId"
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "28"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1c-ng1iKOQSNw2obB7yJyIC6RDUM6g\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Jul 2024 16:42:46 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": null\n}"
+				},
+				{
+					"name": "fail",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Denise\",\n    \"rating\": 4,\n    \"feedback\": \"maybe\",\n    \"email\": \"mybirthdaytoo@email.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/users/{{userId}}/feedback",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"{{userId}}",
+								"feedback"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "83"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"53-RVpcNsvN20Kt9nWR+Qwy+KIBO9s\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Jul 2024 16:42:53 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"data\": null,\n    \"message\": \"User ID 7 has already submitted feedback.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Update User Feedback for userId",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Denise2\",\n    \"rating\": 1,\n    \"feedback\": \"maybe\",\n    \"email\": \"mybirthdaytoo@email.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/users/{{userId}}/feedback",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"{{userId}}",
+						"feedback"
+					]
+				},
+				"description": "Update feedback for this userId. If feedback already exists, update it. Else, create.\n\n**Body:**\n\n`{`\n\n`\"name\": varchar(100), required`\n\n`\"rating\": [1-5], required`\n\n`\"feedback\": text, required`\n\n`\"email\": varchar(100), required`\n\n`}`"
+			},
+			"response": [
+				{
+					"name": "updated",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Denise2\",\n    \"rating\": 1,\n    \"feedback\": \"maybe\",\n    \"email\": \"mybirthdaytoo@email.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/users/:userId/feedback",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								":userId",
+								"feedback"
+							],
+							"variable": [
+								{
+									"key": "userId"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "28"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1c-ng1iKOQSNw2obB7yJyIC6RDUM6g\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Jul 2024 16:43:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": null\n}"
+				},
+				{
+					"name": "created",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Denise2\",\n    \"rating\": 1,\n    \"feedback\": \"maybe\",\n    \"email\": \"mybirthdaytoo@email.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/users/{{userId}}/feedback",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"{{userId}}",
+								"feedback"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "28"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1c-ng1iKOQSNw2obB7yJyIC6RDUM6g\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Jul 2024 16:44:41 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete User Feedback for userId",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/users/{{userId}}/feedback",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"{{userId}}",
+						"feedback"
+					]
+				},
+				"description": "Deletes feedback for this userId."
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/users/:userId/feedback",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								":userId",
+								"feedback"
+							],
+							"variable": [
+								{
+									"key": "userId"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "28"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1c-ng1iKOQSNw2obB7yJyIC6RDUM6g\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Jul 2024 16:43:44 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": null\n}"
+				},
+				{
+					"name": "fail",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/users/{{userId}}/feedback",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"{{userId}}",
+								"feedback"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "92"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5c-7A+giZCjq1PJMAJaOXLQ5XGKYoQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Jul 2024 16:44:22 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"data\": null,\n    \"message\": \"User ID 7 has not submitted a feedback previously.\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "userId",
+			"value": ":userId",
+			"type": "string"
+		}
+	]
+}
