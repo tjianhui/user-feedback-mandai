@@ -45,7 +45,8 @@
 							],
 							"variable": [
 								{
-									"key": "userId"
+									"key": "userId",
+									"value": ""
 								}
 							]
 						}
@@ -68,11 +69,11 @@
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"77-pwcYVg6LUw3kajpr3AYI+vLoY3Q\""
+							"value": "W/\"77-uaEjcp5uvyL5Vg0AdQZeXcK8Skw\""
 						},
 						{
 							"key": "Date",
-							"value": "Fri, 12 Jul 2024 16:43:06 GMT"
+							"value": "Tue, 23 Jul 2024 10:31:48 GMT"
 						},
 						{
 							"key": "Connection",
@@ -84,7 +85,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"name\": \"Denise\",\n            \"email\": \"mybirthdaytoo@email.com\",\n            \"feedback\": \"maybe\",\n            \"rating\": 4,\n            \"user_id\": 7\n        }\n    ]\n}"
+					"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"name\": \"Denise\",\n            \"email\": \"mybirthdaytoo@email.com\",\n            \"feedback\": \"maybe\",\n            \"rating\": 4,\n            \"user_id\": 8\n        }\n    ]\n}"
 				},
 				{
 					"name": "fail",
@@ -92,15 +93,21 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/users/{{userId}}/feedback",
+							"raw": "localhost:3000/users/:userId/feedback",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"users",
-								"{{userId}}",
+								":userId",
 								"feedback"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": ""
+								}
 							]
 						}
 					},
@@ -118,15 +125,15 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "27"
+							"value": "66"
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"1b-jacvLRp9Ew/sJJsbeVC1f1v1T/w\""
+							"value": "W/\"42-VzxiNRr+0szxzGcOoiHzjMIorK0\""
 						},
 						{
 							"key": "Date",
-							"value": "Fri, 12 Jul 2024 16:44:09 GMT"
+							"value": "Tue, 23 Jul 2024 10:27:58 GMT"
 						},
 						{
 							"key": "Connection",
@@ -138,7 +145,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"success\": false,\n    \"data\": []\n}"
+					"body": "{\n    \"success\": false,\n    \"data\": [],\n    \"message\": \"User ID 8 has no feedback.\"\n}"
 				}
 			]
 		},
@@ -240,7 +247,76 @@
 					"body": "{\n    \"success\": true,\n    \"data\": null\n}"
 				},
 				{
-					"name": "fail",
+					"name": "fail - missing body",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    // \"name\": \"Denise\",\n    // \"rating\": 4,\n    // \"feedback\": \"maybe\",\n    // \"email\": \"mybirthdaytoo@email.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/users/:userId/feedback",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								":userId",
+								"feedback"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "77"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4d-FAWlia9irF2d5lGH7Twxza9qR9s\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 23 Jul 2024 10:28:45 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"data\": null,\n    \"message\": \"Rating Feedback Name Email missing.\"\n}"
+				},
+				{
+					"name": "fail - existing feedback",
 					"originalRequest": {
 						"method": "POST",
 						"header": [],
@@ -254,15 +330,21 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/users/{{userId}}/feedback",
+							"raw": "localhost:3000/users/:userId/feedback",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"users",
-								"{{userId}}",
+								":userId",
 								"feedback"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": ""
+								}
 							]
 						}
 					},
@@ -284,11 +366,11 @@
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"53-RVpcNsvN20Kt9nWR+Qwy+KIBO9s\""
+							"value": "W/\"53-VTUHY+IWLRvuXRBhU5RDla8r6d4\""
 						},
 						{
 							"key": "Date",
-							"value": "Fri, 12 Jul 2024 16:42:53 GMT"
+							"value": "Tue, 23 Jul 2024 10:29:37 GMT"
 						},
 						{
 							"key": "Connection",
@@ -300,7 +382,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"success\": false,\n    \"data\": null,\n    \"message\": \"User ID 7 has already submitted feedback.\"\n}"
+					"body": "{\n    \"success\": false,\n    \"data\": null,\n    \"message\": \"User ID 8 has already submitted feedback.\"\n}"
 				}
 			]
 		},
@@ -416,15 +498,21 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/users/{{userId}}/feedback",
+							"raw": "localhost:3000/users/:userId/feedback",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"users",
-								"{{userId}}",
+								":userId",
 								"feedback"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": ""
+								}
 							]
 						}
 					},
@@ -551,15 +639,21 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/users/{{userId}}/feedback",
+							"raw": "localhost:3000/users/:userId/feedback",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"users",
-								"{{userId}}",
+								":userId",
 								"feedback"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": ""
+								}
 							]
 						}
 					},
@@ -581,11 +675,11 @@
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"5c-7A+giZCjq1PJMAJaOXLQ5XGKYoQ\""
+							"value": "W/\"5c-ZumDVbTeW0GByHRKOrZZxlnl79Y\""
 						},
 						{
 							"key": "Date",
-							"value": "Fri, 12 Jul 2024 16:44:22 GMT"
+							"value": "Tue, 23 Jul 2024 10:31:11 GMT"
 						},
 						{
 							"key": "Connection",
@@ -597,7 +691,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"success\": false,\n    \"data\": null,\n    \"message\": \"User ID 7 has not submitted a feedback previously.\"\n}"
+					"body": "{\n    \"success\": false,\n    \"data\": null,\n    \"message\": \"User ID 8 has not submitted a feedback previously.\"\n}"
 				}
 			]
 		}

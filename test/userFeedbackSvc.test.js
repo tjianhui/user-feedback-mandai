@@ -23,7 +23,7 @@ describe('getUserFeedback', () => {
 
   it('tests getUserFeedback - fail', async() => {
     jest.spyOn(userFeedbackDao, 'getFeedback').mockResolvedValue([]);
-    await expect(userFeedbackSvc.getUserFeedback(1)).resolves.toEqual({code: 400, success: false, data: []});
+    await expect(userFeedbackSvc.getUserFeedback(1)).resolves.toEqual({code: 400, success: false, data: [], message: 'User ID 1 has no feedback.'});
   });
 });
 
@@ -33,21 +33,29 @@ describe('createUserFeedback', () => {
     await expect(userFeedbackSvc.createUserFeedback({userId: 99, rating: 5, feedback: 'nil', name: 'XY', email: 'ABC'})).resolves.toEqual({code: 201, success: true, data: null});
   });
 
-  it('tests createUserFeedback - fail', async() => {
+  it('tests createUserFeedback - fail from feedback already exists', async() => {
     jest.spyOn(userFeedbackDao, 'createFeedback').mockResolvedValue(false);
     await expect(userFeedbackSvc.createUserFeedback({userId: 99, rating: 5, feedback: 'nil', name: 'XY', email: 'ABC'})).resolves.toEqual({code: 400, success: false, data: null, message: 'User ID 99 has already submitted feedback.'});
+  });
+
+  it('tests createUserFeedback - fail from missing args', async() => {
+    await expect(userFeedbackSvc.createUserFeedback({userId: 99, rating: 5, feedback: 'nil', email: 'ABC'})).resolves.toEqual({code: 400, success: false, data: null, message: 'Name missing.'});
   });
 });
 
 describe('updateUserFeedback', () => {
-  it('tests updateUserFeedback - success', async() => {
+  it('tests updateUserFeedback - success ok', async() => {
     jest.spyOn(userFeedbackDao, 'updateFeedback').mockResolvedValue(200);
     await expect(userFeedbackSvc.updateUserFeedback({userId: 99, rating: 5, feedback: 'nil', name: 'XY', email: 'ABC'})).resolves.toEqual({code: 200, success: true, data: null});
   });
 
-  it('tests updateUserFeedback - fail', async() => {
+  it('tests updateUserFeedback - success created', async() => {
     jest.spyOn(userFeedbackDao, 'updateFeedback').mockResolvedValue(201);
     await expect(userFeedbackSvc.updateUserFeedback({userId: 99, rating: 5, feedback: 'nil', name: 'XY', email: 'ABC'})).resolves.toEqual({code: 201, success: true, data: null});
+  });
+
+  it('tests updateUserFeedback - fail from missing args', async() => {
+    await expect(userFeedbackSvc.createUserFeedback({userId: 99, rating: 5, feedback: 'nil', email: 'ABC'})).resolves.toEqual({code: 400, success: false, data: null, message: 'Name missing.'});
   });
 });
 
